@@ -9,8 +9,8 @@
         <%= @member.email %> 
       </h4>      
         <div class="col-md-8">
-          <% if @user.calos.any? %>
-            <h3>Calos (<%= @user.calos.count %>)</h3>
+          <% if @user.calos.any? %> <br />
+            <strong>Calorias registradas (<%= @user.calos.count %>)</strong>
             <ol class="calos">
               <%= render @calos %>
             </ol>

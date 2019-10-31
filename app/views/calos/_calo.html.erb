@@ -1,7 +1,18 @@
 <li id="calo-<%= calo.id %>"
-  <span class="user"><%= link_to calo.user.name, calo.user %></span>
-  <span class="content"><%= calo.coment %></span>
+  <span class="user"><%= link_to calo.user.name, calo.user %></span> 
+  <span class="content"> 
+  <%if calo.ncal.present?%>
+  consumio
+  <%= calo.ncal %></span>
+  <%else%>
+  gasto
+  <%= calo.qcal %></span>
+  <%end%>calorias
+  <%if calo.coment.present?%>
+  con la accion "
+  <span class="content"><%= calo.coment %></span> "
+  <%end%>
   <span class="timestamp">
-    Posted <%= time_ago_in_words(calo.created_at) %> ago.
+    Publicado <%= time_ago_in_words(calo.created_at) %> ago.
   </span>
 </li>
