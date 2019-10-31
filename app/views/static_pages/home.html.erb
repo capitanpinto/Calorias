@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   </head>
+  
+<% if user_signed_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="calo_form">
+        <%= render 'shared/calo_form' %>
+      </section>
+    </aside>
+  </div>
+<% else %>
+
   <body>
   <section class="section">
     <div class="container">
@@ -19,4 +33,5 @@
     </div>
   </section>
   </body>
+<%end%>
 </html>

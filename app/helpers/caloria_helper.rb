@@ -1,0 +1,2 @@
+module CaloriaHelper
+end

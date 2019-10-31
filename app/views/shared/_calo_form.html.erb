@@ -1,0 +1,19 @@
+<%= form_with(model: @calo, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <div class="field">
+    <%= f.label "Numero de calorias Consumidas"%><br />
+    <%= f.number_field :ncal, placeholder: "Registra tu consumo de calorias..." %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Numero de calorias Gastadas"%><br />
+    <%= f.number_field :qcal, placeholder: "Registra tu quema de calorias..." %>
+  </div>
+  
+  <div class="field">
+    <%= f.label "Como quemaste o consumiste tus calorias?"%><br />
+    <%= f.text_area :coment, placeholder: "Como quemaste o consumiste tus calorias?" %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>
