@@ -9,6 +9,7 @@ class UsersController < ApplicationController
    if current_user
      @user = current_user
      @calos = @user.calos
+     @member=User.find(params[:id])
    else
      redirect_to new_user_session_path, notice: 'Usted no ha abierto cesion.'
    end
