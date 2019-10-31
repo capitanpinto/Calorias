@@ -1,0 +1,20 @@
+<% provide(:title, 'Lista de Usuarios') %>
+
+      <h1 class="title is-large">
+        Lista de Usuarios
+      </h1>
+
+ <section class="section">
+    <div class="container">
+      <ul class="users">
+       <% @users.each do |user| %>
+        <h1 class="title">
+        <%=  user.name %>
+        </h1>
+      <p class="subtitle">
+        <%=  user.email %>
+      </p>
+      <% end %>
+      </ul>
+    </div>
+  </section>

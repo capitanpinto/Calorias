@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/show'
+  get 'users/index'
   get 'static_pages/calories'
   devise_for :users
   root 'static_pages#home'
