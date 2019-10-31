@@ -2,17 +2,17 @@
   <%= render 'shared/error_messages', object: f.object %>
   
   <div class="field">
-    <%= f.label "Numero de calorias Consumidas"%><br />
+  <strong> <%= f.label "Numero de calorias Consumidas"%><br /></strong>
     <%= f.number_field :ncal, placeholder: "Registra tu consumo de calorias..." %>
   </div>
 
   <div class="field">
-    <%= f.label "Numero de calorias Gastadas"%><br />
+   <strong> <%= f.label "Numero de calorias Gastadas"%></strong><br />
     <%= f.number_field :qcal, placeholder: "Registra tu quema de calorias..." %>
   </div>
   
   <div class="field">
-    <%= f.label "Como quemaste o consumiste tus calorias?"%><br />
+   <strong>  <%= f.label "Como quemaste o consumiste tus calorias?"%><br /></strong>
     <%= f.text_area :coment, placeholder: "Como quemaste o consumiste tus calorias?" %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
