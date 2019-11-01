@@ -3,6 +3,12 @@ class CalosController < ApplicationController
 
   def create
     @calo = current_user.calos.build(calo_params)
+    if  @calo.qcal.nil?
+      @calo.qcal=0
+    elsif @calo.ncal.nil?
+      @calo.ncal=0
+    end
+    
     if @calo.save
       flash[:success] = "Se ha registrado tu uso calorias!"
       redirect_to root_url
@@ -12,8 +18,11 @@ class CalosController < ApplicationController
   end
 
   def destroy
+    @cal=Calo.find_by(params[:user_id])
+    @cal.destroy
+    flash[:success] = "El registro fue eliminado!"
+    redirect_to request.referrer || root_url
   end
-
   private
 
     def calo_params

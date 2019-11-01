@@ -8,7 +8,7 @@
 
   <div class="field">
    <strong> <%= f.label "Numero de calorias Gastadas"%></strong><br />
-    <%= f.number_field :qcal, placeholder: "Registra tu quema de calorias..." %>
+    <%= f.number_field :qcal, placeholder: "Registra tu quema de calorias...", :input_html => { :value => 0} %>
   </div>
   
   <div class="field">
