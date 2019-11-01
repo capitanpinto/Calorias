@@ -9,6 +9,15 @@ class CalosController < ApplicationController
       @calo.ncal=0
     end
     
+  def search
+   if params[:search].blank?  
+     redirect_to(root_path, alert: "Empty field!") and return  
+   else  
+   @parameter = params[:search].downcase  
+   @results = Calo.all.where("lower(coment) LIKE :search", search: @parameter) 
+   end
+  end
+    
     if @calo.save
       flash[:success] = "Se ha registrado tu uso calorias!"
       redirect_to root_url
@@ -21,6 +30,7 @@ class CalosController < ApplicationController
     @cal=Calo.find_by(params[:user_id])
     @cal.destroy
     flash[:success] = "El registro fue eliminado!"
+    flash[:danger] = "Useted no tiene permiso de eliminar el resgitro!"
     redirect_to request.referrer || root_url
   end
   private

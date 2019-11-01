@@ -10,7 +10,7 @@
       </h4>      
         <div class="col-md-8">
           <% if @member.calos.any? %> <br />
-            <strong>Calorias registradas (<%= @user.calos.count %>)</strong>
+            <strong>Calorias registradas (<%= @member.calos.count %>)</strong>
             <ol class="calos">
               <%= render @calos %>
             </ol>
