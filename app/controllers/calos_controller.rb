@@ -27,10 +27,9 @@ class CalosController < ApplicationController
   end
 
   def destroy
-    @cal=Calo.find_by(params[:user_id])
+    @cal= current_user.calos.find_by(id: params[:id])
     @cal.destroy
     flash[:success] = "El registro fue eliminado!"
-    flash[:danger] = "Useted no tiene permiso de eliminar el resgitro!"
     redirect_to request.referrer || root_url
   end
   private
@@ -38,6 +37,11 @@ class CalosController < ApplicationController
     def calo_params
       params.require(:calo).permit(:coment, :ncal, :qcal)
     end
+    
+  #  def correct_user
+  #    @cal = current_user.calos.find_by(id: params[:id])
+   #   redirect_to root_url if @cal.nil?
+   # end
   
   
 end
