@@ -8,16 +8,6 @@ class CalosController < ApplicationController
     elsif @calo.ncal.nil?
       @calo.ncal=0
     end
-    
-  def search
-   if params[:search].blank?  
-     redirect_to(root_path, alert: "Empty field!") and return  
-   else  
-   @parameter = params[:search].downcase  
-   @results = Calo.all.where("lower(coment) LIKE :search", search: @parameter) 
-   end
-  end
-    
     if @calo.save
       flash[:success] = "Se ha registrado tu uso calorias!"
       redirect_to root_url
@@ -25,6 +15,17 @@ class CalosController < ApplicationController
       render 'static_pages/home'
     end
   end
+    
+  def search
+    @string=params[:search]
+   if params[:search].blank?  
+     redirect_to(root_path, alert: "Empty field!") and return  
+   else  
+    @parameter = params[:search].downcase  
+    @results = Calo.all.where("lower(coment) LIKE :search", search: "#{@parameter}")  
+   end
+  end
+
 
   def destroy
     @cal= current_user.calos.find_by(id: params[:id])
@@ -37,11 +38,6 @@ class CalosController < ApplicationController
     def calo_params
       params.require(:calo).permit(:coment, :ncal, :qcal)
     end
-    
-  #  def correct_user
-  #    @cal = current_user.calos.find_by(id: params[:id])
-   #   redirect_to root_url if @cal.nil?
-   # end
   
   
 end
