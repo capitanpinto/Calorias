@@ -3,10 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'rails',      '6.0.0'
 gem 'devise'
-gem "chartkick"
-gem 'morrisjs-rails'
-gem 'raphael-rails'
-gem 'groupdate'
 gem 'puma',       '3.12.1'
 gem 'sass-rails', '5.1.0'
 gem 'webpacker',  '4.0.7'
