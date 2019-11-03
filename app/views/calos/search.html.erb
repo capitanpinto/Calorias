@@ -1,0 +1,20 @@
+<h3>Search Result</h3>  
+
+    <% @results.each do |result| %>  
+    <%= User.find(result.user_id).name %> 
+<%if result.ncal!=0%>
+  consumio
+  <%= result.ncal %></span>
+  <%else%>
+  gasto
+  <%= result.qcal %></span>
+  <%end%>calorias
+  
+  <%if result.coment.present?%>
+  con la accion "
+  <span class="content"><%= result.coment %></span> "
+  <%end%>
+  <span class="timestamp">
+    Publicado <%= time_ago_in_words(result.created_at) %> ago.
+  </span>
+    <% end %>
