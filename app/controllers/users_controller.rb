@@ -10,13 +10,11 @@ class UsersController < ApplicationController
      @user = current_user
      @member=User.find(params[:id])
      @calos = @member.calos.page(params[:page])
-     @data={}
-     @qdata={}
+     @data=[{:name=>"Calorias Consumidas",:datos=>{}},
+            {:name=>"Calorias Gastadas",:datos=>{}}]
      @member.calos.each do |calo|
-       @data["#{calo.created_at}"]=calo.ncal
-     end
-     @member.calos.each do |calo|
-       @data["#{calo.created_at}"]=calo.qcal
+       @data[0][:datos]["#{calo.created_at}"]=calo.ncal
+       @data[1][:datos]["#{calo.created_at}"]=calo.qcal
      end
    else
      redirect_to new_user_session_path, notice: 'Usted no ha abierto cesion.'

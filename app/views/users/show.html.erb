@@ -8,7 +8,7 @@
       <h4>
         <%= @member.email %> 
       </h4>      
-      <%= line_chart(@data) %>
+      <%= line_chart @data %>
         <div class="col-md-8">
           <% if @member.calos.any? %> <br />
             <strong>Calorias registradas (<%= @member.calos.count %>)</strong>
