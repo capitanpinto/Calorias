@@ -12,17 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2019_10_31_124928) do
 
-  create_table "caloria", force: :cascade do |t|
-    t.text "coment"
-    t.float "numcal"
-    t.float "quemcal"
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id", "created_at"], name: "index_caloria_on_user_id_and_created_at"
-    t.index ["user_id"], name: "index_caloria_on_user_id"
-  end
-
   create_table "calos", force: :cascade do |t|
     t.text "coment"
     t.float "ncal"
@@ -47,6 +36,5 @@ ActiveRecord::Schema.define(version: 2019_10_31_124928) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "caloria", "users"
   add_foreign_key "calos", "users"
 end
