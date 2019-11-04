@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :authenticate_user!, only: [:show, :index, :destroy]
+    before_action :authenticate_user!, only: [ :destroy]
     
   def index
     @users = User.all.page(params[:page])
