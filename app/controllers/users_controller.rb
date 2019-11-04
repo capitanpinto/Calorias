@@ -12,7 +12,7 @@ class UsersController < ApplicationController
      @calos = @member.calos.page(params[:page])
      @data=[{:name=>"Calorias Consumidas",:datos=>{}},
             {:name=>"Calorias Gastadas",:datos=>{}}]
-     @member.calos.each do |calo|
+     @member.calos.first(3).each do |calo|
        @data[0][:datos]["#{calo.created_at}"]=calo.ncal
        @data[1][:datos]["#{calo.created_at}"]=calo.qcal
      end

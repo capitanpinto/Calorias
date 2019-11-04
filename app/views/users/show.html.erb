@@ -9,6 +9,8 @@
         <%= @member.email %> 
       </h4>      
       <%= line_chart @data %>
+      <div> <%= @data.first(2) %></div>
+       asf
         <div class="col-md-8">
           <% if @member.calos.any? %> <br />
             <strong>Calorias registradas (<%= @member.calos.count %>)</strong>
