@@ -8,9 +8,10 @@
       <h4>
         <%= @member.email %> 
       </h4>      
-      <%= line_chart @data %>
-      <div> <%= @data.first(2) %></div>
-       asf
+      
+      <%= line_chart [{name: "calorias gastadas", data: @ddata.map{|calo| [calo.created_at, calo.qcal] }},
+{name: "calorias consumidas", data: @ddata.map{|calo| [calo.created_at, calo.ncal] }}]%>
+
         <div class="col-md-8">
           <% if @member.calos.any? %> <br />
             <strong>Calorias registradas (<%= @member.calos.count %>)</strong>

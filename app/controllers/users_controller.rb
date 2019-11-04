@@ -6,18 +6,14 @@ class UsersController < ApplicationController
   end
 
  def show    
-   if current_user
-     @user = current_user
-     @member=User.find(params[:id])
-     @calos = @member.calos.page(params[:page])
-     @data=[{:name=>"Calorias Consumidas",:datos=>{}},
-            {:name=>"Calorias Gastadas",:datos=>{}}]
-     @member.calos.first(3).each do |calo|
-       @data[0][:datos]["#{calo.created_at}"]=calo.ncal
-       @data[1][:datos]["#{calo.created_at}"]=calo.qcal
-     end
-   else
-     redirect_to new_user_session_path, notice: 'Usted no ha abierto cesion.'
-   end
+      @member=User.find(params[:id])
+      @calos = @member.calos.page(params[:page])
+      @ddata=@member.calos.first(2)
+      max=@member.calos.count - 1
+      (2..max).each do |i|
+        if @member.calos[i].created_at > Time.now - 60*60*24*30
+          @ddata << @member.calos[i]
+        end
+      end
  end
 end
