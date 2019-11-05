@@ -21,7 +21,6 @@
      <% if alert %>
        <p class="alert alert-danger"><%= alert %></p>
      <% end %>
-<p class="navbar-text">
   
 <%= form_tag(search_calo_path, :method => "get",   
     class: 'navbar-form navbar-left') do %>  
@@ -32,20 +31,22 @@
     </div>  
   </div>  
 <% end %>
-
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.name %></strong>.
-  <%= link_to "Inicio", root_path, :class => 'navbar-link'  %> |
-  <%= link_to "Mi Perfil", current_user, :class => 'navbar-link'  %> |
-  <%= link_to "Usuarios", users_index_path, :class => 'navbar-link'  %> |
-  <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %> |
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+ <% if user_signed_in? %>
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+  <%= link_to "Inicio", root_path, :class => 'navbar-link'  %> 
+  <%= link_to "Mi Perfil", current_user, :class => 'navbar-link'  %> 
+  <%= link_to "Usuarios", users_index_path, :class => 'navbar-link'  %> 
+  <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %> 
   <%= link_to "Cerrar Cesion", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> 
 <% else %>
-  <%= link_to "Pagina Principal", root_path, :class => 'navbar-link'  %> |
-  <%= link_to "Registrate!", new_user_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Pagina Principal", root_path, :class => 'navbar-link'  %> 
+  <%= link_to "Registrate!", new_user_registration_path, :class => 'navbar-link'  %> 
   <%= link_to "Iniciar cesion", new_user_session_path, :class => 'navbar-link'  %>  
 <% end %>
-</p>
+    </a>
+  </div>
 </section>
     <%= yield %>
   </body>

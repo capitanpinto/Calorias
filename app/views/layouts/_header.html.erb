@@ -1,0 +1,62 @@
+<section class='hero is-primary'>
+  <body>
+     <% if notice %>
+       <p class="alert alert-success"><%= notice %></p>
+     <% end %>
+     <% if alert %>
+       <p class="alert alert-danger"><%= alert %></p>
+     <% end %>
+  
+<%= form_tag(search_calo_path, :method => "get",   
+    class: 'navbar-form navbar-left') do %>  
+  <div class="input-group">  
+    <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  
+    <div class="input-group-btn">  
+      <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:coment => nil%>  
+    </div>  
+  </div>  
+<% end %>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+      <%= render 'layouts/header' %>
+        <div id="navbarBasicExample" class="navbar-menu">
+   <div class="navbar-start">
+    <% if user_signed_in? %>
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <a class="navbar-item">
+       <%= link_to "Inicio", root_path, :class => 'navbar-link'  %>
+      </a>
+      
+      <a class="navbar-item">
+      <%= link_to "Mi Perfil", current_user, :class => 'navbar-link'  %>
+      </a>
+      
+      <a class="navbar-item">
+      <%= link_to "Usuarios", users_index_path, :class => 'navbar-link'  %>
+      </a>
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+           <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %>
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+             <%= link_to "Cerrar Cesion", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> 
+          </a>
+        </div>
+      </div>
+      <% else %>
+      
+      <a class="navbar-item">
+       <%= link_to "Pagina Principal", root_path, :class => 'navbar-link'  %>
+      </a> 
+      <a class="navbar-item">
+       <%= link_to "Registrate!", new_user_registration_path, :class => 'navbar-link'  %>
+      </a> 
+      <a class="navbar-item">
+       <%= link_to "Iniciar cesion", new_user_session_path, :class => 'navbar-link'  %> 
+      </a> 
+      <% end %>
+    </div>
+</section>
+</body>
