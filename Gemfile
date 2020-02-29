@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'rails',      '6.0.0'
 gem 'devise'
 gem 'chartkick'
-gem 'puma',       '3.12.1'
+gem 'puma',       '3.12.3'
 gem 'faker',          '2.1.2'
 gem 'kaminari'
 gem 'sass-rails', '5.1.0'
